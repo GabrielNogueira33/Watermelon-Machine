@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/Marise%20Miranda/Downloads/Marises%20Machine.html -->
+<!-- Editado por Enzo Sutto e Gabriel Nogueira 😀-->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermelon Machine</title>
+</head>
+<style>
+ button {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #f84a05;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #57b400;
+        }
+
+
+
+</style>
+
+<body style="background-image: url('https://img.freepik.com/vetores-premium/cima-melancia-fundo_29971-263.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;" >
+    
+    <center>
+        <h1 style="color:#72b255">Watermelon</h1><h1 style="color: #005643">Machine</h1>
+
+<br><br>
+
+        <h3 style="color: #502a0e">Valor</h3>
+        <input id="demo1" type="text"placeholder="Digite o valor" style="background-color: #f16a6a"><br>
+       <span style="color:white"> Base:</span> <select id="select_base" style="background-color: #f16a6a"><option value="decimal"style="background-color:rgb(202, 202, 202)">decimal</option>
+                <option value="octal"style="background-color:rgb(64, 0, 255)">octal</option>
+        <option value="hexadecimal"style="background-color: rgb(0, 255, 195)">hexadecimal</option>
+        <option value="binario"style="background-color:  rgb(0, 98, 2)">binario</option></select>
+
+<br><br>
+
+        <h3 style="color:white">converter para:</h3>
+
+
+        <input onclick="aparecer_octal()" type="checkbox" id="checkbox_octal"><b style="color:rgb(64, 0, 255) ">Octal</b>
+<br>
+        <div style="display: none; background-color: #a6ff0070 ; border-radius: 5px; padding: 5px; color: rgb(64, 0, 255); width: 15%; height: 40px; font-weight:700;font-size:30px" id="demo2"></div>
+
+<br><br>
+
+        <input onclick="aparecer_hexa()" type="checkbox" id="checkbox_hexa"><b style="color:rgb(0, 255, 195)">Hexadecimal</b>
+<br>
+        <div style="display: none; background-color: #a6ff0070 ; border-radius: 5px; padding: 5px; color: rgb(0, 255, 195); width: 30%; height: 40px; font-weight:700;font-size:30px" id="demo3"></div>
+        
+<br><br>
+
+<input onclick="aparecer_decimal()" type="checkbox" id="checkbox_decimal"><b style="color:rgb(202, 202, 202)">Decimal</b>
+<br>
+        <div style="display: none; background-color: #a6ff0070 ;border-radius: 5px; padding: 5px; color: rgb(202, 202, 202); width: 35%; height: 40px; font-weight:700;font-size:30px" id="demo5"></div>
+        
+<br><br>
+
+
+<input onclick="aparecer_bin()" type="checkbox" id="checkbox_bin"><b style="color:rgb(0, 98, 2)">Binário</b>
+<br>
+        <div style="display: none; background-color: #a6ff0070; border-radius: 5px; padding: 5px; color: rgb(0, 98, 2); width: 40%; height: 40px; font-weight:700 ; font-size:20px" id="demo4"></div>
+
+<br><br>
+
+<button button:hover background-color: #f16a6a; onclick="converter()">Converter</button>
+    </center>
+
+
+
+
+<script>
+function converter() {
+    
+    var base = document.getElementById("select_base").value    
+    var valor = document.getElementById("demo1").value;
+    var valorDecimal =  parseInt(valor, base === 'hexadecimal' ? 16 : base === 'octal' ? 8 : base === 'binario' ? 2 : 10);   
+
+    if (!validarEntrada(valor, base)) {
+                alert('ERRO: Insira um número válido!');
+                return;
+            }
+
+
+document.getElementById("demo2").innerHTML = ` ${valorDecimal.toString(8)}`;
+document.getElementById("demo3").innerHTML = ` ${valorDecimal.toString(16).toUpperCase()}`;
+document.getElementById("demo4").innerHTML = ` ${valorDecimal.toString(2)}`;
+document.getElementById("demo5").innerHTML = `${valorDecimal}`;
+
+
+}
+
+function aparecer_bin() {
+        document.getElementById("checkbox_bin")
+        if(checkbox_bin.checked == true){
+                demo4.style.display = 'block'
+        }else{
+                demo4.style.display = 'none'
+        }
+}
+
+function aparecer_hexa() {
+        document.getElementById("checkbox_hexa")
+        if(checkbox_hexa.checked == true){
+                demo3.style.display = 'block'
+        }else{
+                demo3.style.display = 'none'
+        }
+}
+
+function aparecer_octal() {
+        document.getElementById("checkbox_octal")
+        if(checkbox_octal.checked == true){
+                demo2.style.display = 'block'
+        }else{
+                demo2.style.display = 'none'
+        }
+}
+function aparecer_decimal(){
+        document.getElementById("checkbox_decimal")
+        if(checkbox_decimal.checked == true){
+                demo5.style.display = 'block'
+        }else{
+                demo5.style.display = 'none'
+        }
+}
+
+
+function validarEntrada(valor,base) {
+
+var charValida = '';
+
+if (base === 'decimal') {
+        charValida = '0123456789';
+} else if (base === 'hexadecimal') {
+        charValida = '0123456789ABCDEFabcdef';
+} else if (base === 'octal') {
+        charValida = '01234567';
+} else if (base === 'binario') {
+        charValida = '01';
+}
+
+for (var i = 0; i < valor.length; i++) {
+    if (charValida.indexOf(valor[i]) === -1) {
+        return false;
+    }
+}
+return true;
+}
+
+
+</script></body></html>

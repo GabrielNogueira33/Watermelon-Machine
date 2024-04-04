@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/Marise%20Miranda/Downloads/Marises%20Machine.html -->
+<!-- Editado por Enzo Sutto e Gabriel Nogueira 😀-->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-image: url('https://tryengineering.org/wp-content/uploads/numerical-continuous-code-in-green-color-abstract-2021-08-30-21-41-12-utc-copy.jpg')" >
+    
+    <center>
+        <h1 style="color:white">Watermelon Machine</h1>
+
+<br><br>
+
+        <h3 style="color:white">Decimal</h3>
+        <input id="demo1" type="text"placeholder="Digite o valor em decimal" style="background-color: #f16a6a">
+
+<br><br>
+
+        <h3 style="color:white">converter para:</h3>
+
+
+        <input onclick="aparecer_octal()" type="checkbox" id="checkbox_octal"><b style="color:white ">Octal</b>
+<br>
+        <div style="display: none; background-color: #ec3535 ; border-radius: 5px; padding: 5px; color: rgb(255, 255, 255); width: 15%; height: 40px; font-weight:700;font-size:30px" id="demo2"></div>
+
+<br><br>
+
+        <input onclick="aparecer_hexa()" type="checkbox" id="checkbox_hexa"><b style="color:white">Hexadecimal</b>
+<br>
+        <div style="display: none; background-color: #ec3535 ; border-radius: 5px; padding: 5px; color: rgb(255, 255, 255); width: 30%; height: 40px; font-weight:700;font-size:30px" id="demo3"></div>
+        
+<br><br>
+
+        <input onclick="aparecer_bin()" type="checkbox" id="checkbox_bin"><b style="color:white">Binário</b>
+<br>
+        <div style="display: none; background-color: #ec3535 ; border-radius: 5px; padding: 5px; color: rgb(0, 180, 20); width: 60%; height: 40px; font-weight:700 ; font-size:20px" id="demo4"></div>
+
+<br><br>
+
+<button onclick="converter()">Converter</button>
+    </center>
+
+
+
+
+<script>
+
+function converter() {
+    
+    var decimal = Number (demo1.value);
+
+let octal = decimal.toString(8);
+
+let hexadecimal = decimal.toString(16);
+
+let binaria = decimal.toString(2);
+
+document.getElementById("demo1").innerHTML = ` ${decimal}`;
+document.getElementById("demo2").innerHTML = ` ${octal}`;
+document.getElementById("demo3").innerHTML = ` ${hexadecimal}`;
+document.getElementById("demo4").innerHTML = ` ${binaria}`;
+
+
+}
+
+function aparecer_bin() {
+        document.getElementById("checkbox_bin")
+        if(checkbox_bin.checked == true){
+                demo4.style.display = 'block'
+        }else{
+                demo4.style.display = 'none'
+        }
+}
+
+function aparecer_hexa() {
+        document.getElementById("checkbox_hexa")
+        if(checkbox_hexa.checked == true){
+                demo3.style.display = 'block'
+        }else{
+                demo3.style.display = 'none'
+        }
+}
+
+function aparecer_octal() {
+        document.getElementById("checkbox_octal")
+        if(checkbox_octal.checked == true){
+                demo2.style.display = 'block'
+        }else{
+                demo2.style.display = 'none'
+        }
+       
+}
+
+</script></body></html>
